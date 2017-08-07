@@ -80,18 +80,46 @@ var arr = [2, 3, 5, 1, 5, 3, 4];
 var popArr = arr.myPop();
 console.log(arr, popArr);
 
-//Array.unshift
-Array.prototype.myShift = function () {
+//Array.shift
+Array.prototype.myShift = function() {
   if (this.length > 0) {
-    var shifted = this.slice(0, 1)
-    var arr = this.slice(1)
+    var shifted = this.slice(0, 1);
+    var arr = this.slice(1);
     this.splice(0, arr.length, ...arr);
-    this.splice(arr.length)
+    this.splice(arr.length);
     return shifted;
   } else {
-    return undefined
+    return undefined;
   }
-}
+};
 var arr = [2, 3, 5, 1, 5, 3, 4];
 var shiftArr = arr.myShift();
 console.log(arr, shiftArr);
+
+//Array.map
+Array.prototype.mymap = function(callback) {
+  arr = [];
+  for (let i = 0; i < this.length; i++) arr[i] = callback(this[i]);
+  return arr;
+};
+var arr = [];
+arr.mymap(Math.sqrt);
+
+//Array.reduce
+Array.prototype.myReduce = function(callback, initialValue) {
+  var acc = initialValue || undefined;
+  for (var i = 0; i < this.length; i++) {
+    if (acc !== undefined) {
+      acc = callback(acc, this[i]);
+    } else {
+      acc = this[i];
+    }
+  }
+  return acc;
+};
+
+var arr = [2, 3, 5, 1, 5, 3, 4];
+var reduceArr = arr.myReduce((a, b) => {
+  return a + b;
+});
+console.log(arr, reduceArr);

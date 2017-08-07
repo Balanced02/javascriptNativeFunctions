@@ -10,7 +10,6 @@ var arr = [2, 4, 5, 1, 3];
 var pushArr = arr.myPush(9);
 console.log(arr, pushArr);
 
-
 //Array unshift
 Array.prototype.myUnshift = function(...val) {
   var newArr = this.slice();
@@ -21,7 +20,6 @@ Array.prototype.myUnshift = function(...val) {
 var arr = [2, 4, 5, 1, 3];
 var unshiftArr = arr.myUnshift(9, 6, 4);
 console.log(arr, unshiftArr);
-
 
 //Array sort
 Array.prototype.mySort = function(callback) {
@@ -40,18 +38,60 @@ Array.prototype.mySort = function(callback) {
         }
       }
     }
-  } 
+  }
   return this;
 };
 
 var arr = [100, 10015, 857, 1429, 9, 8793, 129];
-var arr = [1]
+var arr = [1];
 arr.mySort((a, b) => {
   return b - a;
 });
 
-// Array
-// String
-// Number
-// Object
-// Boolean
+//Array.filter
+Array.prototype.myFilter = function(callback) {
+  var arr = [];
+  for (var i = 0; i < this.length; i++) {
+    if (callback(this[i])) {
+      arr.push(this[i]);
+    }
+  }
+  return arr;
+};
+var arr = [2, 4, 5, 1, 3];
+var filterArr = arr.myFilter(a => {
+  return a > 2;
+});
+console.log(arr, filterArr);
+
+//Array.pop
+Array.prototype.myPop = function() {
+  if (this.length > 0) {
+    var popped = this.slice(this.length - 1);
+    var arr = this.slice(0, this.length - 1);
+    this.splice(0, this.length, ...arr);
+    return popped;
+  } else {
+    return undefined;
+  }
+};
+
+var arr = [2, 3, 5, 1, 5, 3, 4];
+var popArr = arr.myPop();
+console.log(arr, popArr);
+
+//Array.unshift
+Array.prototype.myShift = function () {
+  if (this.length > 0) {
+    var shifted = this.slice(0, 1)
+    var arr = this.slice(1)
+    this.splice(0, arr.length, ...arr);
+    this.splice(arr.length)
+    return shifted;
+  } else {
+    return undefined
+  }
+}
+var arr = [2, 3, 5, 1, 5, 3, 4];
+var shiftArr = arr.myShift();
+console.log(arr, shiftArr);

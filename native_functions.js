@@ -10,6 +10,8 @@ var arr = [2, 4, 5, 1, 3];
 var pushArr = arr.myPush(9);
 console.log(arr, pushArr);
 
+
+//Array unshift
 Array.prototype.myUnshift = function(...val) {
   var newArr = this.slice();
   this.splice(0, this.length, ...val, ...newArr);
@@ -20,6 +22,8 @@ var arr = [2, 4, 5, 1, 3];
 var unshiftArr = arr.myUnshift(9, 6, 4);
 console.log(arr, unshiftArr);
 
+
+//Array sort
 Array.prototype.mySort = function(callback) {
   var swap = (arr, i, j) => {
     var temp = arr[i];

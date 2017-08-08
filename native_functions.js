@@ -123,3 +123,16 @@ var reduceArr = arr.myReduce((a, b) => {
   return a + b;
 });
 console.log(arr, reduceArr);
+
+
+//Array.slice
+Array.prototype.mySlice = function(begin = 0, end = this.length) {
+  var newArr = [];
+  for (var i = begin; i < end; i++) {
+    newArr.push(this[i])
+  }
+  return newArr
+}
+var arr = [2, 3, 5, 1, 5, 3, 4];
+var sliceArr = arr.mySlice()
+console.log(arr, sliceArr);

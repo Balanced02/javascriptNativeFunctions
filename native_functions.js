@@ -1,4 +1,11 @@
-// Array.push
+// Native Implementation of Array.push
+/** 
+ * The push() method adds one or more elements 
+ * to the end of an array and RETURNS the new 
+ * length of the array.
+ * RETURN VALUE: The new length property of the 
+ * object upon which the method was called.
+*/
 Array.prototype.myPush = function(...val) {
   for (var i = 0; i < val.length; i++) {
     this[this.length] = val[i];
@@ -8,7 +15,13 @@ Array.prototype.myPush = function(...val) {
 
 var arr = [2, 4, 5, 1, 3];
 var pushArr = arr.myPush(9);
+var pushArr2 = arr.myPush(9, 8, 6)
 console.log(arr, pushArr);
+
+// Expected Output: [ 2, 4, 5, 1, 3, 9 ] 6
+
+console.log(arr, pushArr2);
+// Expected Output: [ 2, 4, 5, 1, 3, 9, 8, 6 ] 8
 
 //Array unshift
 Array.prototype.myUnshift = function(...val) {
